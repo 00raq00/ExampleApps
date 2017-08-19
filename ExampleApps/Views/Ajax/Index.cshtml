@@ -1,0 +1,38 @@
+﻿@model string
+@{
+    ViewBag.Title = "Index";
+    AjaxOptions options = new AjaxOptions
+    {
+        UpdateTargetId = "searchResult",
+        Confirm = "Are you sure to start search?",
+        InsertionMode = InsertionMode.Replace,
+        LoadingElementId = "divLoading"
+    };
+}
+<h2>Index</h2>
+<table style="width: 100%;">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Name</th>           
+            <th>EMail</th>
+        </tr>
+    </thead>
+    <tbody id="searchResult">
+        @Html.Action("SearchData", new { keyword = "" })
+    </tbody>
+</table>
+@using (Ajax.BeginForm("SearchData", options))
+{
+    <div id="divLoading" class="modalwindow" style=" display: none; "> 
+      
+<div class="modalwindowcontent">
+    <p style="color:black; font-size:large  ">Loading Data..</p>
+</div>
+        
+    </div>
+    <div>
+        @Html.TextBox("keyword")
+        <button type="submit">Search FullName</button>
+    </div>
+}

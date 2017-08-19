@@ -1,0 +1,11 @@
+﻿
+@model IList<WebApplication6.Controllers.PersonalDetail>
+
+@foreach (var p in Model)
+{
+    <tr>
+        <td>@p.Id</td>
+        <td>@p.Name</td>
+        <td>@p.EMail</td>
+    </tr>
+}
